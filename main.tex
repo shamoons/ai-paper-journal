@@ -98,9 +98,23 @@ Keywords: statistical code summarization, thought experiment, source code
 
 \subsection*{Summarizing Git Commits and GitHub Pull Requests Using Sequence to Sequence Neural Attention Models (2017)\cite{zaidi2017summarizing}}}
 
+This is not a published paper, per se, but seems to be a Master's project or some other class project. Nonetheless, I think it is an interesting idea so I added it to my reading list. The idea is (as suggested by the title) to take diffs from Github and translate it to a pull request message.
+
+Their training data is massive, almost 350 GB, so they don't load it in memory, but rather use Azure Storage. They then filter only active repositories (one committer and separate reviewer in the past 6 months and pull request messages with at least 20 characters).
+
+They restrict their languages to: Python, Ruby, Java, Javascript, R, Scala and C#. Their model is a standard sequence-to-sequence attention model. Since a git commit is a series of add / remove lines, they append a <DEL> or <ADD> token to the beginning of the line.
+
+When it comes to evaluation, there are no standard benchmarks (kudos to them for setting one!) so they use cosine-similarity to calculat a BLUE score to get average n-gram precision.
+\newline\newline
+Keywords: neural code translation, github, sequence-to-sequence, attention
+
+\section*{Week 6/17/19 - 6/23/19}
+\subsection*{Modeling Vocabulary for Big Code Machine Learning (Year)\cite{miller2019adversarial}}
+
 Things I want to talk about.
 \newline\newline
 Keywords: keyword, list
+
 
 
 \section*{Week X/XX/19 - X/XX/19}
