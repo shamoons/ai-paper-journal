@@ -111,9 +111,15 @@ Keywords: neural code translation, github, sequence-to-sequence, attention
 \section*{Week 6/17/19 - 6/23/19}
 \subsection*{Modeling Vocabulary for Big Code Machine Learning (2019)\cite{babii2019modeling}}
 
-Things I want to talk about.
+This paper is a survey of a variety of methods to tokenize a corpus of source code. They compare the methods by vocabulary size and tokens. Although not the primary focus on the paper, they also check training times against a code completion task.
+
+The problem is that, "While software is more repetitive than natural language, software vocabulary is much more diverse as developers can create new identifiers at will." This leads to a never ending class of Out-of-vocabulary problems. Several methods are studied in this paper to establish some baselines: unsplit, word splitting and byte-pair encoding (BPE). As expected, BPE has the most significant gains by reducing the vocabulary size 1,000x. "We conclude that as a rule of thumb, a BPE with a 1–2\% token increase performs very well."
+
+During training, they configured LSTM's with layer size of 300, 650 hidden units and 3 LSTM layers. Furthermore, all of their training was done on a consumer grade Geforce GTX 1080. Their fastest model can process one epoch (1.1m files) in ~ 6 hours.
+
+Conclusion: BPE is the way to go with neural code tasks.
 \newline\newline
-Keywords: keyword, list
+Keywords: embeddings, word2vec, byte-pair-encoding, code completion, survey
 
 
 
