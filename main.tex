@@ -89,20 +89,20 @@ Keywords: adversarial training, optimization, min-max
 
 Great paper that goes into uniqueness. The question they pose is a thought experiment:
 \newline
-\begin{quote}
-You are a software engineer starting a new project, requirements in hand. Unfortunately, your keyboard has malfunctioned, and your only method for entering program text is through copying and pasting existing code fragments. Fortunately (perhaps), you have oracle-like access to all source code that has ever been written. How much can you accomplish?
-\end{quote}
+% \begin{quote}
+% You are a software engineer starting a new project, requirements in hand. Unfortunately, your keyboard has malfunctioned, and your only method for entering program text is through copying and pasting existing code fragments. Fortunately (perhaps), you have oracle-like access to all source code that has ever been written. How much can you accomplish?
+% \end{quote}
 They consider source code as being comprised of smaller units of source code and they attempt to model experiments to calculate syntactic redundancy. Most interestingly, they retokenize by replacing variable names with some sort of identifier on a per file basis. That part is pretty clever, for sure.
 \newline\newline
 Keywords: statistical code summarization, thought experiment, source code
 
-\subsection*{Summarizing Git Commits and GitHub Pull Requests Using Sequence to Sequence Neural Attention Models (2017)\cite{zaidi2017summarizing}}}
+\subsection*{Summarizing Git Commits and GitHub Pull Requests Using Sequence to Sequence Neural Attention Models (2017)\cite{zaidi2017summarizing}}
 
 This is not a published paper, per se, but seems to be a Master's project or some other class project. Nonetheless, I think it is an interesting idea so I added it to my reading list. The idea is (as suggested by the title) to take diffs from Github and translate it to a pull request message.
 
 Their training data is massive, almost 350 GB, so they don't load it in memory, but rather use Azure Storage. They then filter only active repositories (one committer and separate reviewer in the past 6 months and pull request messages with at least 20 characters).
 
-They restrict their languages to: Python, Ruby, Java, Javascript, R, Scala and C#. Their model is a standard sequence-to-sequence attention model. Since a git commit is a series of add / remove lines, they append a <DEL> or <ADD> token to the beginning of the line.
+They restrict their languages to: Python, Ruby, Java, Javascript, R, Scala and C\#. Their model is a standard sequence-to-sequence attention model. Since a git commit is a series of add / remove lines, they append a <DEL> or <ADD> token to the beginning of the line.
 
 When it comes to evaluation, there are no standard benchmarks (kudos to them for setting one!) so they use cosine-similarity to calculat a BLUE score to get average n-gram precision.
 \newline\newline
@@ -117,11 +117,35 @@ The problem is that, "While software is more repetitive than natural language, s
 
 During training, they configured LSTM's with layer size of 300, 650 hidden units and 3 LSTM layers. Furthermore, all of their training was done on a consumer grade Geforce GTX 1080. Their fastest model can process one epoch (1.1m files) in ~ 6 hours.
 
-Conclusion: BPE is the way to go with neural code tasks.
+Conclusion: BPE is the way to go with neural code tasks. Their conclusion is, "As a consequence, we were able to train large-scale NLMs at
+scale: a model trained on 10,106 projects can be trained in less than a day, averaging 27 projects per minute and 50 source code files per second. This LM was competitive at language modeling and code suggestion tasks. Moreover, this kind of performance opens the door to the pretraining of large NLMs for software, and the transfer learning possibilities pretrained NLMs enable."
 \newline\newline
 Keywords: embeddings, word2vec, byte-pair-encoding, code completion, survey
 
 
+\section*{Week 6/24/19 - 6/30/19}
+\subsection*{Knockoff Nets: Stealing Functionality of Black-Box Models (2018)\cite{orekondy2019knockoff}}
+
+This work studied the possibility of copying an existing network by querying it optimally. Since the objective is non-differntiable, the use reinforcement learning.
+
+They pose their optimization problem as one that involves selecting images to query the Victim network in a way that minimizes thet total number of queries needed to create an effective "knockoff."
+
+As for stealing the architecture of an image classifier, they use a standard ResNet or VGG rather than trying to parse what the existing architecture could be.
+
+They then do an unfair thing by pre-training it with Imagenet - so of course, it will perform well! Cheating, if you ask me.
+
+The networks they are attacking are Caltech256 (256 general objects), CUBS200 (200 bird species), Indoor67 (67 indoor scenes), Diabetic5 (5 diabetic retinopathy scales).
+
+They effectively copy the target victim networks with minimal querying by choosing an adaptive policy.
+
+\newline\newline
+Keywords: adversarial attack, reinforcement learning, policy selection
+
+\subsection*{Mitigating adversarial effects through randomization (2017)\cite{xie2017mitigating}}
+
+Things I want to talk about.
+\newline\newline
+Keywords: keyword, list
 
 \section*{Week X/XX/19 - X/XX/19}
 \subsection*{Paper Title (Year)\cite{miller2019adversarial}}
