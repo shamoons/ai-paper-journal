@@ -4,7 +4,7 @@
 
 \title{Progress Report - Shamoon Siddiqui}
 \author{Ghulam Rasool}
-\date{May 2019}
+\date{May 2019 - June 2019}
 
 \usepackage{natbib}
 \usepackage{graphicx}
@@ -19,7 +19,7 @@
 \section*{Week 5/19/19 - 5/25/19}
 
 \subsection*{Adversarial Learning in Statistical Classification: A
-Comprehensive Review of Defenses Against Attacks\citep{miller2019adversarial}}
+Comprehensive Review of Defenses Against Attacks\cite{miller2019adversarial}}
 
 This was a thorough review of adversarial attacks and defenses. The basic story is that there have been several attacks and a handful of defenses developed. It seems that no single defense is robust against arbitrary attacks, so there's a shift towards anomaly detection (AD) instead of defending.
 \newline\newline
@@ -133,7 +133,6 @@ They pose their optimization problem as one that involves selecting images to qu
 As for stealing the architecture of an image classifier, they use a standard ResNet or VGG rather than trying to parse what the existing architecture could be.
 
 They then do an unfair thing by pre-training it with Imagenet - so of course, it will perform well! Cheating, if you ask me. The networks they are attacking are Caltech256 (256 general objects), CUBS200 (200 bird species), Indoor67 (67 indoor scenes), Diabetic5 (5 diabetic retinopathy scales). They effectively copy the target victim networks with minimal querying by choosing an adaptive policy.
-
 \newline\newline
 Keywords: adversarial attack, reinforcement learning, policy selection
 
@@ -147,12 +146,15 @@ By adding the proposed randomization layers to an adversarially trained model, t
 \newline\newline
 Keywords: adversarial defense, randomization
 
-\section*{Week X/XX/19 - X/XX/19}
-\subsection*{Paper Title (Year)\cite{miller2019adversarial}}
+\subsection*{Adversarial attacks beyond the image space (2017)\cite{zeng2017adversarial}}
 
-Things I want to talk about.
+This work considers modifying 3D objects with shading, rotation, etc instead of pixel changes to craft an adversarial attack. The modified 3D object is then projected into 2D space to be used for two tasks: object recognition and visual question answering.
+
+The main question they seek to answer is "can neural networks still be fooled if we do not perturb 2D image pixels, but instead 3D physical properties?"
+
+They utilized the FGSM for differentiable rending or Zeroth-Order Optimization (ZOO) for non-differentiable rendering. Overall, they have a pretty high success rate (depending on the transformation), with image changes yielding a 96\% successful attack.
 \newline\newline
-Keywords: keyword, list
+Keywords: adversarial attack, non-differentiable
 
 
 \bibliographystyle{plain}
