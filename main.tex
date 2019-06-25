@@ -132,20 +132,20 @@ They pose their optimization problem as one that involves selecting images to qu
 
 As for stealing the architecture of an image classifier, they use a standard ResNet or VGG rather than trying to parse what the existing architecture could be.
 
-They then do an unfair thing by pre-training it with Imagenet - so of course, it will perform well! Cheating, if you ask me.
-
-The networks they are attacking are Caltech256 (256 general objects), CUBS200 (200 bird species), Indoor67 (67 indoor scenes), Diabetic5 (5 diabetic retinopathy scales).
-
-They effectively copy the target victim networks with minimal querying by choosing an adaptive policy.
+They then do an unfair thing by pre-training it with Imagenet - so of course, it will perform well! Cheating, if you ask me. The networks they are attacking are Caltech256 (256 general objects), CUBS200 (200 bird species), Indoor67 (67 indoor scenes), Diabetic5 (5 diabetic retinopathy scales). They effectively copy the target victim networks with minimal querying by choosing an adaptive policy.
 
 \newline\newline
 Keywords: adversarial attack, reinforcement learning, policy selection
 
 \subsection*{Mitigating adversarial effects through randomization (2018)\cite{xie2017mitigating}}
 
-Things I want to talk about.
+This paper was quite a refreshing read. It was free from any artificial pomp or pretentiousness as their solution was intuitive, clever and easy to implement. At inference time, they randomly resize images. In the case of ImageNet, the standard size is 299 x 299, but they resize (randomly) between [299, 331) based on empirical evidence.
+
+As for attacks that they are defending against, they selected the Fast Gradient Sign Method, which is one shot, DeepFool, which is iterative, and the CW attack, which is currently one of the SOTA attacks. The other randomization they apply (at inference time) is zero-padding. The beauty of these 2 methods is that it requires no additional training overhead.
+
+By adding the proposed randomization layers to an adversarially trained model, they achieve a normalized score of 0.924 (ranked No.2 among 107 defense models) in the NIPS 2017 adversarial examples defense challenge, which is far better than using adversarial training alone with a normalized score of 0.773 (ranked No.56).
 \newline\newline
-Keywords: keyword, list
+Keywords: adversarial defense, randomization
 
 \section*{Week X/XX/19 - X/XX/19}
 \subsection*{Paper Title (Year)\cite{miller2019adversarial}}
